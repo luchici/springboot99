@@ -1,4 +1,4 @@
-package com.example.springboot99;
+package com.example.springboot99.controlers;
 
 import com.example.springboot99.entity.City;
 import com.example.springboot99.services.CityService;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -18,10 +19,12 @@ public class MainRestController {
 
     private WeatherService theWeatherService;
     private CityService theCityService;
+    private HttpServletRequest httpServletRequest;
 
     @GetMapping("/test")
     public String test() {
-        return "This is a test";
+        return "This is a test   " + httpServletRequest.getRemoteAddr() +
+                "  ----------   " + httpServletRequest.getRemoteHost();
     }
 
     //    GET CITY
